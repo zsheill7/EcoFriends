@@ -170,7 +170,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
         }
 
-        self.view.addFlippedBackground()
+        //self.view.addFlippedBackground()
+        self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
+        
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)

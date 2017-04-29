@@ -82,7 +82,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     
    
     
-    self.view.addBackground()
+    //self.view.addBackground()
+    self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
    // searchBar.delegate = self
     //self.view.addBackground()
      if let userID = FIRAuth.auth()?.currentUser?.uid {

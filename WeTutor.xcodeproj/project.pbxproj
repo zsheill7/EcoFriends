@@ -75,6 +75,7 @@
 		C86D41161E9ACC39000C5B0F /* FollowUsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D41151E9ACC39000C5B0F /* FollowUsTableViewController.swift */; };
 		C87237FD1E8C10E100C5A641 /* UserCellThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87237FC1E8C10E100C5A641 /* UserCellThree.xib */; };
 		C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87237FE1E8C163900C5A641 /* UserCellThree.swift */; };
+		C8790AE11EB41007006C302C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8790AE01EB41007006C302C /* GoogleService-Info.plist */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
@@ -89,7 +90,6 @@
 		C87984A71E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */; };
 		C87984AF1E0C8138003EB7A1 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C87984AE1E0C8138003EB7A1 /* MenuViewController.storyboard */; };
 		C87984B11E0CC00A003EB7A1 /* Tutor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C87984B01E0CC00A003EB7A1 /* Tutor.storyboard */; };
-		C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87984B21E0D013A003EB7A1 /* GoogleService-Info.plist */; };
 		C87984B51E0D01FB003EB7A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984B41E0D01FB003EB7A1 /* User.swift */; };
 		C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88498BF1E0B51A0000C4675 /* Main.storyboard */; };
 		C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */; };
@@ -209,6 +209,7 @@
 		C86D41151E9ACC39000C5B0F /* FollowUsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUsTableViewController.swift; sourceTree = "<group>"; };
 		C87237FC1E8C10E100C5A641 /* UserCellThree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellThree.xib; sourceTree = "<group>"; };
 		C87237FE1E8C163900C5A641 /* UserCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellThree.swift; sourceTree = "<group>"; };
+		C8790AE01EB41007006C302C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuControllerCustomizable.swift; path = Protocols/PagingMenuControllerCustomizable.swift; sourceTree = "<group>"; };
 		C87984AE1E0C8138003EB7A1 /* MenuViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
 		C87984B01E0CC00A003EB7A1 /* Tutor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutor.storyboard; sourceTree = "<group>"; };
-		C87984B21E0D013A003EB7A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C87984B41E0D01FB003EB7A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C88498BF1E0B51A0000C4675 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorOrTuteeViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				96090AE61D9CDD2E00709CA6 /* WeTutor */,
 				C879844F1E0B9781003EB7A1 /* UITests */,
 				96090AE51D9CDD2E00709CA6 /* Products */,
-				C87984B21E0D013A003EB7A1 /* GoogleService-Info.plist */,
+				C8790AE01EB41007006C302C /* GoogleService-Info.plist */,
 				96090AF31D9CDD2E00709CA6 /* Info.plist */,
 				C715FA72A8755E6E0706E54B /* Pods */,
 				45C0CE53565FE65B32BFB150 /* Frameworks */,
@@ -693,13 +693,13 @@
 				C84F180D1E713CF700EC54BF /* SubjectCell.xib in Resources */,
 				C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */,
 				96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */,
+				C8790AE11EB41007006C302C /* GoogleService-Info.plist in Resources */,
 				C831B6C81EA71D6B005C230F /* TuteeUserCell.xib in Resources */,
 				C84536BA1EA53C9400E76999 /* RefreshView.xib in Resources */,
 				C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
 				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
-				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

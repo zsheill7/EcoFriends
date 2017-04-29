@@ -284,7 +284,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         calendarView.dataSource = self
         calendarView.isUserInteractionEnabled = false
         
-        self.view.addBackground()
+       // self.view.addBackground()
+        
+        self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
         calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
         //self.calendarView.width = self.view.width + 20

@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>600357815975-mcnkpkfuhsou6pgkluov1rssdhseq6lh.apps.googleusercontent.com</string>
+	<string>914445090122-obbgtbp2f2n36n8qd4ab3dod2nnr5a1u.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.600357815975-mcnkpkfuhsou6pgkluov1rssdhseq6lh</string>
+	<string>com.googleusercontent.apps.914445090122-obbgtbp2f2n36n8qd4ab3dod2nnr5a1u</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDmgFdNvg69L91tQjV4PB6hu5RaBu9-FbY</string>
+	<string>AIzaSyAEouY_-VJMkUmh6Cd_GDUzMPYGJ1pxkUI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>600357815975</string>
+	<string>914445090122</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.tutorme.app</string>
+	<string>com.ecofriends.app</string>
 	<key>PROJECT_ID</key>
-	<string>tutorme-e7292</string>
+	<string>ecofriends-8510d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tutorme-e7292.appspot.com</string>
+	<string>ecofriends-8510d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:600357815975:ios:ffb7cceca0a39d73</string>
+	<string>1:914445090122:ios:841c2072391ab0dd</string>
 	<key>DATABASE_URL</key>
-	<string>https://tutorme-e7292.firebaseio.com</string>
+	<string>https://ecofriends-8510d.firebaseio.com</string>
 </dict>
 </plist>

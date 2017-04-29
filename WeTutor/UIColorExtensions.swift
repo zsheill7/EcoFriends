@@ -31,6 +31,12 @@ extension UIColor {
     class func lightTeal() -> UIColor {
         return UIColor(netHex: 0x70CECF)
     }
+    class func backgroundGreen() -> UIColor {
+        //return UIColor(netHex: 0x90EE90)
+        //return UIColor(netHex: 0xBCED91)
+        //return UIColor(netHex: 0xC0D9AF)
+       return UIColor(netHex: 0xA9C9A4) 
+    }
     
     class func sliderGreen() -> UIColor {
         //return UIColor(netHex: 0x2E9D9F)
