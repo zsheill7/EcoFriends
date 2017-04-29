@@ -38,6 +38,10 @@ extension UIColor {
        return UIColor(netHex: 0xA9C9A4) 
     }
     
+    class func highlightedBlue() -> UIColor {
+        return UIColor.flatBlue//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+    }
+    
     class func sliderGreen() -> UIColor {
         //return UIColor(netHex: 0x2E9D9F)
          //return UIColor(netHex: 0x36C9CC) //brighter blue

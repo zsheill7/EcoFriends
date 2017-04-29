@@ -102,12 +102,15 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
             
       //  }
        
-        self.view.addBackground("book.png")
+       // self.view.addBackground("book.png")
+       
+        self.view.addFullScreenBackground(named: "background-green.jpg")
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background-green.jpg")!)
         
         
         /*if (FBSDKAccessToken.current() != nil)
         {
-            // User is already logged in     
+            // User is already logged in
             print("(FBSDKAccessToken.current() != nil)")
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuVC") as! PagingMenuViewController
@@ -423,9 +426,9 @@ func createAccount() {
         nameField.leftViewNormalColor = UIColor.white
         nameField.textColor = UIColor.white
         nameField.tintColor = UIColor.white
-        nameField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        nameField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        nameField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        nameField.dividerActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        nameField.leftViewActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        nameField.placeholderActiveColor =  UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
         let leftView = UIImageView()
         leftView.image = Icon.star
@@ -478,9 +481,9 @@ func createAccount() {
         emailField.leftViewNormalColor = UIColor.white
         emailField.textColor = UIColor.white
         emailField.tintColor = UIColor.white
-        emailField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        emailField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        emailField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        emailField.dividerActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        emailField.leftViewActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        emailField.placeholderActiveColor =  UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
         emailField.delegate = self
         
@@ -505,9 +508,9 @@ func createAccount() {
          passwordField.textColor = UIColor.white
          passwordField.tintColor = UIColor.white
         
-        passwordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        passwordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        passwordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        passwordField.dividerActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        passwordField.leftViewActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        passwordField.placeholderActiveColor =  UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
@@ -540,9 +543,9 @@ func createAccount() {
         confirmPasswordField.tintColor = UIColor.white
         confirmPasswordField.detailColor = UIColor.lightGray.lighten(byPercentage: 0.5)!
         confirmPasswordField.dividerNormalColor = UIColor.white
-        confirmPasswordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        confirmPasswordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
-        confirmPasswordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        confirmPasswordField.dividerActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        confirmPasswordField.leftViewActiveColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        confirmPasswordField.placeholderActiveColor =  UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
         confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         

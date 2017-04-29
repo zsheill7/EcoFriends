@@ -26,6 +26,22 @@ extension UIView {
             bundle: bundle
             ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
+    func addFullScreenBackground(named: String) {
+        // screen width and height:
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let backgroundImage = UIImage(named: named)
+        
+        var imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+            
+        imageViewBackground.image = backgroundImage
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.scaleToFill
+        imageViewBackground.tag = 4
+        self.addSubview(imageViewBackground)
+        self.sendSubview(toBack: imageViewBackground)
+    }
     
     func addBackground() {
         // screen width and height:

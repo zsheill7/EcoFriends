@@ -76,6 +76,8 @@
 		C87237FD1E8C10E100C5A641 /* UserCellThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87237FC1E8C10E100C5A641 /* UserCellThree.xib */; };
 		C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87237FE1E8C163900C5A641 /* UserCellThree.swift */; };
 		C8790AE11EB41007006C302C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8790AE01EB41007006C302C /* GoogleService-Info.plist */; };
+		C8790AE31EB5202B006C302C /* NewProduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8790AE21EB5202B006C302C /* NewProduceViewController.swift */; };
+		C8790AE51EB53EDF006C302C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8790AE41EB53EDF006C302C /* Food.swift */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
@@ -136,7 +138,7 @@
 		2C0795EA5FC191C95C70C6CF /* Pods-TextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.release.xcconfig"; sourceTree = "<group>"; };
 		4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeTutor.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor.release.xcconfig"; sourceTree = "<group>"; };
 		928FC51B6AE8ACDCE5CB3BE0 /* Pods-TextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.debug.xcconfig"; sourceTree = "<group>"; };
-		96090AE41D9CDD2E00709CA6 /* WeTutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeTutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96090AE41D9CDD2E00709CA6 /* EcoFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,6 +212,8 @@
 		C87237FC1E8C10E100C5A641 /* UserCellThree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellThree.xib; sourceTree = "<group>"; };
 		C87237FE1E8C163900C5A641 /* UserCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellThree.swift; sourceTree = "<group>"; };
 		C8790AE01EB41007006C302C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C8790AE21EB5202B006C302C /* NewProduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProduceViewController.swift; sourceTree = "<group>"; };
+		C8790AE41EB53EDF006C302C /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -297,7 +301,7 @@
 		96090ADB1D9CDD2E00709CA6 = {
 			isa = PBXGroup;
 			children = (
-				96090AE61D9CDD2E00709CA6 /* WeTutor */,
+				96090AE61D9CDD2E00709CA6 /* EcoFriends */,
 				C879844F1E0B9781003EB7A1 /* UITests */,
 				96090AE51D9CDD2E00709CA6 /* Products */,
 				C8790AE01EB41007006C302C /* GoogleService-Info.plist */,
@@ -310,12 +314,12 @@
 		96090AE51D9CDD2E00709CA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				96090AE41D9CDD2E00709CA6 /* WeTutor.app */,
+				96090AE41D9CDD2E00709CA6 /* EcoFriends.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		96090AE61D9CDD2E00709CA6 /* WeTutor */ = {
+		96090AE61D9CDD2E00709CA6 /* EcoFriends */ = {
 			isa = PBXGroup;
 			children = (
 				C82C35FB1E9217B000DD17CD /* WeTutor.entitlements */,
@@ -336,6 +340,7 @@
 				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 			);
+			name = EcoFriends;
 			path = WeTutor;
 			sourceTree = "<group>";
 		};
@@ -418,11 +423,13 @@
 				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
 				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
 				C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */,
+				C8790AE21EB5202B006C302C /* NewProduceViewController.swift */,
 				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 				C8338B371E63DFC300202E3A /* Event.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
+				C8790AE41EB53EDF006C302C /* Food.swift */,
 				C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */,
 				C8E47F2B1E7636D7009351C8 /* Unused.swift */,
 				C837BF801EA1EA9C000F0CEF /* Rating.swift */,
@@ -609,9 +616,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		96090AE31D9CDD2E00709CA6 /* WeTutor */ = {
+		96090AE31D9CDD2E00709CA6 /* EcoFriends */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "WeTutor" */;
+			buildConfigurationList = 96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "EcoFriends" */;
 			buildPhases = (
 				6099C8DF19EA89AE80F6B37F /* [CP] Check Pods Manifest.lock */,
 				96090AE01D9CDD2E00709CA6 /* Sources */,
@@ -625,9 +632,9 @@
 			);
 			dependencies = (
 			);
-			name = WeTutor;
+			name = EcoFriends;
 			productName = WeTutor;
-			productReference = 96090AE41D9CDD2E00709CA6 /* WeTutor.app */;
+			productReference = 96090AE41D9CDD2E00709CA6 /* EcoFriends.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -659,7 +666,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "WeTutor" */;
+			buildConfigurationList = 96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "EcoFriends" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -672,7 +679,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96090AE31D9CDD2E00709CA6 /* WeTutor */,
+				96090AE31D9CDD2E00709CA6 /* EcoFriends */,
 			);
 		};
 /* End PBXProject section */
@@ -794,6 +801,7 @@
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
+				C8790AE51EB53EDF006C302C /* Food.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */,
@@ -812,6 +820,7 @@
 				C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */,
 				C84536BC1EA53CBE00E76999 /* RefreshView.swift in Sources */,
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
+				C8790AE31EB5202B006C302C /* NewProduceViewController.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C84536C01EA5497200E76999 /* WeTutorPullToRefresh.swift in Sources */,
@@ -978,7 +987,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecofriends.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1007,7 +1016,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecofriends.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1020,7 +1029,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "WeTutor" */ = {
+		96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "EcoFriends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96090AF41D9CDD2E00709CA6 /* Debug */,
@@ -1029,7 +1038,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "WeTutor" */ = {
+		96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "EcoFriends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96090AF71D9CDD2E00709CA6 /* Debug */,

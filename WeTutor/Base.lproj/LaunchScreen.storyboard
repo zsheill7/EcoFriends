@@ -20,16 +20,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="YkY-0I-ZkH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Green rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="dpM-pn-dSg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EcoFriends app icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-Xa-Fqz">
+                                <rect key="frame" x="127" y="273" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Ssq-u2-vZn"/>
+                                    <constraint firstAttribute="width" constant="120" id="eeE-c3-ZN9"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="McG-dM-c8J" firstAttribute="top" secondItem="YkY-0I-ZkH" secondAttribute="bottom" id="7lo-t5-gpr"/>
-                            <constraint firstAttribute="trailing" secondItem="YkY-0I-ZkH" secondAttribute="trailing" id="K1c-QA-iWL"/>
-                            <constraint firstItem="YkY-0I-ZkH" firstAttribute="leading" secondItem="khi-da-9AC" secondAttribute="leading" id="Rfi-sJ-gKm"/>
-                            <constraint firstItem="YkY-0I-ZkH" firstAttribute="top" secondItem="khi-da-9AC" secondAttribute="top" id="oaW-mL-F0m"/>
+                            <constraint firstAttribute="trailing" secondItem="dpM-pn-dSg" secondAttribute="trailing" id="8Oe-6e-Og8"/>
+                            <constraint firstItem="McG-dM-c8J" firstAttribute="top" secondItem="dpM-pn-dSg" secondAttribute="bottom" id="8gJ-JC-Wbr"/>
+                            <constraint firstItem="Ixb-Xa-Fqz" firstAttribute="centerY" secondItem="khi-da-9AC" secondAttribute="centerY" id="9Cc-Cu-Gqv"/>
+                            <constraint firstItem="dpM-pn-dSg" firstAttribute="top" secondItem="khi-da-9AC" secondAttribute="top" id="QbZ-0A-OCL"/>
+                            <constraint firstItem="dpM-pn-dSg" firstAttribute="leading" secondItem="khi-da-9AC" secondAttribute="leading" id="Qda-YX-mg4"/>
+                            <constraint firstItem="Ixb-Xa-Fqz" firstAttribute="centerX" secondItem="khi-da-9AC" secondAttribute="centerX" id="u0a-VM-1wL"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,6 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreenImage" width="1242" height="2208"/>
+        <image name="EcoFriends app icon" width="1059" height="1059"/>
+        <image name="Green rectangle" width="1890" height="3297"/>
     </resources>
 </document>

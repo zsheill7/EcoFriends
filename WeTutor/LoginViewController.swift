@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
             horizConstant = 100
         }
         
-      self.view.addBackground("book.png")
+     self.view.addFullScreenBackground(named: "background-green.jpg")
      
         
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
@@ -356,7 +356,7 @@ class LoginViewController: UIViewController {
         _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
     }
     
-    let lightPurpleColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+    let lightPurpleColor = UIColor.highlightedBlue()//UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
     
     fileprivate func prepareEmailField() {
         emailField = ErrorTextField(frame: CGRect(x: horizConstant, y: 6 * constant, width: view.width - (2 * horizConstant), height: constant))

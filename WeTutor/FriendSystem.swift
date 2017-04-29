@@ -29,6 +29,7 @@ class FriendSystem {
         return USER_REF.child("\(id!)")
     }
     
+    var FOOD_REF = FIRDatabase.database().reference().child("food")
 
     var CURRENT_USER_FRIENDS_REF: FIRDatabaseReference {
         return CURRENT_USER_REF.child("friends")
@@ -341,6 +342,7 @@ class FriendSystem {
     // MARK: - All users
     /** The list of all users */
     var userList = [User]()
+    var foodList = [Food]()
     /** Adds a user observer. The completion function will run every time this list changes, allowing you
      to update your UI. */
     
@@ -399,6 +401,12 @@ class FriendSystem {
             }*/
         })
         
+    }
+    
+    func addFoodObserver(_ update: @escaping () -> Void) {
+        FOOD_REF.observe(FIRDataEventType.value, with: { (snapshot) in
+            
+        })
     }
     /** Removes the user observer. This should be done when leaving the view that uses the observer. */
     func removeUserObserver() {

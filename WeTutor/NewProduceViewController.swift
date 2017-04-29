@@ -1,9 +1,11 @@
 //
-//  TutorSignUpViewController.swift
+//  CreateNewProduce.swift
+//  EcoFriends
 //
-//  Created by Zoe on 12/21/16.
-//  Copyright © 2017 Zoe Sheill. All rights reserved.
+//  Created by Zoe on 4/29/17.
+//  Copyright © 2017 CosmicMind. All rights reserved.
 //
+
 
 import UIKit
 import Eureka
@@ -17,46 +19,11 @@ import FirebaseAnalytics
 import NVActivityIndicatorView
 import Popover
 
-var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "Undergraduate", "Graduate"]
-private enum MenuSection {
-    case all(content: AllContent)
-    case menuView(content: MenuViewContent)
-    case menuController(content: MenuControllerContent)
-    
-    fileprivate enum AllContent: Int { case standard, segmentedControl, infinite }
-    fileprivate enum MenuViewContent: Int { case underline, roundRect }
-    fileprivate enum MenuControllerContent: Int { case standard }
-    
-    
-
-    
-    init?(indexPath: IndexPath) {
-        switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
-        case (0, let row):
-            guard let content = AllContent(rawValue: row) else { return nil }
-            self = .all(content: content)
-        case (1, let row):
-            guard let content = MenuViewContent(rawValue: row) else { return nil }
-            self = .menuView(content: content)
-        case (2, let row):
-            guard let content = MenuControllerContent(rawValue: row) else { return nil }
-            self = .menuController(content: content)
-        default: return nil
-        }
-    }
-    
-    var options: PagingMenuControllerCustomizable {
-        let options: PagingMenuControllerCustomizable
-        options = PagingMenuOptions1()
-        return options
-        
-    }
-}
 
 
 
 
-class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorViewable {
+class NewProduceViewController : FormViewController, NVActivityIndicatorViewable {
     var ref: FIRDatabaseReference!
     
     func displayAlert(_ title: String, message: String) {
@@ -89,17 +56,19 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         static let textView = "textview"
     }
     
-   
+    
     override func dismissKeyboard() {
         view.endEditing(true)
     }
     
     typealias Emoji = String
     var currentUserIsTutor: Bool?
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        FriendSystem.system.getCurrentUser {_ in 
+        FriendSystem.system.getCurrentUser {_ in
             let currentUser = FriendSystem.system.currentUser
             if currentUser != nil {
                 self.currentUserIsTutor = currentUser?.isTutor
@@ -110,91 +79,90 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         print("self.currentUserIsTutor \(self.currentUserIsTutor)")
         self.loadForm()
-       
+        
     }
     
     func loadForm() {
         form
             
-            +++ Section("Basic Info")
+            +++ Section("")
             
             
-            <<< ZipCodeRow("zipcode") {
-                $0.title = "Zipcode"
-                $0.tag = "zipcode"
-                $0.placeholder = "90210"
+        
+            <<< TextRow("Title").cellSetup { cell, row in
+               // cell.textField.title = row.tag
+                row.title = row.tag
+                cell.textField.placeholder = "10 Cans of Beans"//row.tag
             }
             
-           /* <<< TextRow("school") {
-                $0.title = "School Name"
-                $0.tag = "school"
-                $0.placeholder = "Mercer Island High School"
-            }
-            */
-            <<< PhoneRow("phone") {
-                $0.title = "Phone Number"
-                $0.tag = "phone"
-                $0.placeholder = "12062752633"
-            }
-            
-            +++ Section()
-            
-            
-            <<< PickerInlineRow<String>("gender") { (row : PickerInlineRow<String>) -> Void in
-                row.title = "Gender"
-                row.tag = "gender"
-                row.options = ["Male", "Female", "Other"]
+            <<< TextRow("Location").cellSetup {
                 
-                row.value = row.options[0]
+                $1.title = $0.row.tag
+                $1.cell.textField.placeholder = "Address"//$0.row.tag
             }
             
-           /* <<< PickerInlineRow<String>("grade") { (row : PickerInlineRow<String>) -> Void in
-                row.title = "Grade"
-                row.tag = "grade"
-                row.options = gradeLevels
-                
-                row.value = row.options[0]
-            }
-
-            
-            <<< MultipleSelectorRow<Emoji>("subject") {
-                $0.title = "Preferred Subject"
-                $0.tag = "subject"
-                $0.options = subjectNames
-                $0.value = ["Math"]
-                }
-                .onPresent { from, to in
-                    to.view.backgroundColor = UIColor.backgroundBlue()
-                    to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))
-            }*/
-
-            +++ Section("Biography")
-            
-            /*
-            <<< TextRow("gpa") {
-                $0.title = "GPA (4.0 scale)"
-                $0.tag = "gpa"
-                $0.placeholder = "3.6"
+             +++ Section("")
+           
+            <<< DecimalRow("Price") {
+                $0.useFormatterDuringInput = true
+                $0.title = "Hourly Price"
+                $0.placeholder = "$17.00"
+                let formatter = CurrencyFormatter()
+                formatter.locale = .current
+                formatter.numberStyle = .currency
+                $0.formatter = formatter
                 if currentUserIsTutor != nil {
-                    if currentUserIsTutor == true {
-                        $0.hidden = false
-                    } else {
-                        $0.hidden = true
-                    }
+                    $0.hidden = .function([""], { form -> Bool in
+                        return !self.currentUserIsTutor!
+                    })
                     
                 } else {
                     $0.hidden = false
                 }
-            }*/
+            }
+            
+            
+             
+             <<< MultipleSelectorRow<Emoji>("producetype") {
+             $0.title = "Produce Type"
+             $0.tag = "producetype"
+             $0.options = produceTypes
+             $0.value = ["Grain"]
+             }
+             .onPresent { from, to in
+             to.view.backgroundColor = UIColor.backgroundBlue()
+             to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))
+             }
+            
+            +++ Section("")
+            
+           
+
+            /*
+             <<< TextRow("gpa") {
+             $0.title = "GPA (4.0 scale)"
+             $0.tag = "gpa"
+             $0.placeholder = "3.6"
+             if currentUserIsTutor != nil {
+             if currentUserIsTutor == true {
+             $0.hidden = false
+             } else {
+             $0.hidden = true
+             }
+             
+             } else {
+             $0.hidden = false
+             }
+             }*/
             
             <<< TextAreaRow("description") {
-                $0.placeholder = "Tell us a bit about yourself. This will appear on your profile."
+                $0.placeholder = "Description"
                 $0.tag = "description"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 90)
                 }.cellSetup({ (cell, row) in
                     cell.backgroundColor = UIColor.clear
-                   
-                
+                    
+                    
                     cell.textView.backgroundColor = UIColor.clear
                 })
             
@@ -218,31 +186,34 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     
     func continueSelected() {
         print("here1")
-        let row1: ZipCodeRow? = self.form.rowBy(tag: "zipcode")
-        let zipcode = row1?.value
+        let row1: TextRow? = self.form.rowBy(tag: "Title")
+        let title = row1?.value
         
-       /* let row2: TextRow? = self.form.rowBy(tag: "school")
-        let school = row2?.value*/
-        let row3: PhoneRow? = self.form.rowBy(tag: "phone")
-        let phone = row3?.value
-        let row4: PickerInlineRow<String>? = self.form.rowBy(tag: "gender")
-        let gender = row4?.value
-        /*let row5: PickerInlineRow<String>? = self.form.rowBy(tag: "grade")
-        let grade = row5?.value
-        let row6: MultipleSelectorRow<Emoji>? = self.form.rowBy(tag: "subject")
-        let subject = row6?.value
+        /* let row2: TextRow? = self.form.rowBy(tag: "school")
+         let school = row2?.value*/
+        let row3: TextRow? = self.form.rowBy(tag: "Location")
+        let location = row3?.value
         
-        var subjectArray: [String]?
-        if subject != nil {
-            subjectArray = Array(subject!)
-        }*/
+        let row4: DecimalRow? = self.form.rowBy(tag: "Price")
+        let price = row4?.value
+        //let row5: PickerInlineRow<String>? = self.form.rowBy(tag: "grade")
+      //   let grade = row5?.value
+        
+        
+         let row6: MultipleSelectorRow<Emoji>? = self.form.rowBy(tag: "producetype")
+         let producetype = row6?.value
+         
+         var produceArray: [String]?
+         if producetype != nil {
+            produceArray = Array(producetype!)
+         }
         let row7: TextAreaRow? = self.form.rowBy(tag: "description")
         let description = row7?.value
         
-       /* let row8: TextRow? = self.form.rowBy(tag: "gpa")
-        let gpa = row8?.value*/
+        /* let row8: TextRow? = self.form.rowBy(tag: "gpa")
+         let gpa = row8?.value*/
         
-        if zipcode != nil, phone != nil, gender != nil {
+        if title != nil, location != nil {
             
             self.ref = FIRDatabase.database().reference()
             
@@ -251,8 +222,11 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             userDefaults.set(description, forKey: "description")
             let user = FIRAuth.auth()?.currentUser
             
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let userID = UUID().uuidString
+            
+            let destUserID = FIRAuth.auth()?.currentUser
+            
+         /*   self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("got snapshot")
                 
@@ -269,30 +243,33 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                     
                     let size = CGSize(width: 30, height:30)
                     
+                    */
                     
-                    
-                    self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
-                   // self.ref.child("users/\(userID!)/schoolName").setValue(school)
-                    self.ref.child("users/\(userID!)/phone").setValue(phone)
-                    self.ref.child("users/\(userID!)/gender").setValue(gender)
+                    //self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
+                    // self.ref.child("users/\(userID!)/schoolName").setValue(school)
+                    self.ref.child("food/\(userID)/title").setValue(title)
+                    self.ref.child("food/\(userID)/location").setValue(location)
+                    self.ref.child("food/\(userID)/price").setValue(price)
+                    self.ref.child("food/\(userID)/producetype").setValue(producetype)
                     /*self.ref.child("users/\(userID!)/grade").setValue(grade)
-                    self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)*/
-                    self.ref.child("users/\(userID!)/description").setValue(description)
-                   /* self.ref.child("users/\(userID!)/gpa").setValue(gpa)
-              
-                    FIRAnalytics.setUserPropertyString(school, forName: "school")*/
-                    FIRAnalytics.setUserPropertyString(gender, forName: "gender")
-                  /*  FIRAnalytics.setUserPropertyString(grade, forName: "grade")
-                    FIRAnalytics.setUserPropertyString(gpa, forName: "gpa")
+                     self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)*/
+                    self.ref.child("food/\(userID)/description").setValue(description)
+                    self.ref.child("food/\(userID)/userID").setValue(destUserID)
+                    /* self.ref.child("users/\(userID!)/gpa").setValue(gpa)
+                     
+                     FIRAnalytics.setUserPropertyString(school, forName: "school")*/
+                    //FIRAnalytics.setUserPropertyString(gender, forName: "gender")
+                    /*  FIRAnalytics.setUserPropertyString(grade, forName: "grade")
+                     FIRAnalytics.setUserPropertyString(gpa, forName: "gpa")
+                     
+                     for subject in subjectArray! {
+                     FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
+                     }*/
                     
-                    for subject in subjectArray! {
-                        FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
-                    }*/
-                   
-                        
+                    
                     print("error=nil")
                     let geocoder = CLGeocoder()
-                    geocoder.geocodeAddressString(zipcode!) { placemarks, error in
+                   /* geocoder.geocodeAddressString(zipcode!) { placemarks, error in
                         if error != nil {
                             print(error?.localizedDescription ?? "")
                         } else {
@@ -304,42 +281,42 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                                 self.ref.child("users/\(userID!)/longitude").setValue(longitude)
                             }
                         }
-                    }
+                    }*/
                     self.stopAnimating()
                     
                     self.performSegue(withIdentifier: "toSecondVC", sender: self)
                     
-                   
-                } else {
+                    
+             /*   } else {
                     self.displayAlert("You are not signed in", message: "Please log in again")
                     self.stopAnimating()
-                }
+                }*/
                 
                 
                 // ...
-            }) { (error) in
+           /* }) { (error) in
                 self.displayAlert("Error", message: error.localizedDescription)
                 self.stopAnimating()
                 
             }
+            */
             
             
-            
-            
+        
             
         } else {
             self.displayAlert("Error", message: "Please fill out every section.")
             self.stopAnimating()
             
         }
-
+        
     }
     
-       
+    
     
     func tableView(_ tableView: UITableView,
-                            willDisplayHeaderView view: UIView,
-                            forSection section: Int) {
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
             view.backgroundView?.backgroundColor = UIColor(white: 1, alpha: 0.0)
         }
@@ -356,18 +333,19 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         
     }
     
-   
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 1.0)
     }
-   
-   
+    
+    
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-   
+
+
 
 
 

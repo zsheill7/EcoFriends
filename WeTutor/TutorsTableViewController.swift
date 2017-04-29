@@ -78,6 +78,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         dropDown.show()
     }
     
+    @IBAction func addProduce(_ sender: Any) {
+        self.performSegue(withIdentifier: "toProduceVC", sender: self)
+    }
     
     fileprivate var channelRefHandle: FIRDatabaseHandle?
     fileprivate var channels: [Channel] = []
@@ -132,7 +135,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 
             }
         }
-        let titles = ["Tutors", "Students"]
+      //  let titles = ["Tutors", "Students"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
         
         self.tableView.backgroundColor = UIColor.clear
@@ -174,13 +177,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
         
         
-        let segmentedControl = TwicketSegmentedControl(frame: frame)
+        /*let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
   
         segmentedControl.delegate = self
         segmentedControl.sliderBackgroundColor = UIColor.sliderGreen()//UIColor.flatBlue
         segmentedControl.backgroundColor = UIColor.clear
-        view.addSubview(segmentedControl)
+        view.addSubview(segmentedControl)*/
         print(finalUserList.count)
        
         self.tableView.reloadData()
@@ -226,13 +229,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             guard let cell = cell as? SubjectCell else { return }
             
             // Setup your custom UI components
-            let currentSubject = subjectNames[index]
+            let currentSubject = produceTypes[index]
             cell.subjectLabel.text = currentSubject
-            if let imageName: String = subjectImageNames[currentSubject] {
+           /* if let imageName: String = subjectImageNames[currentSubject] {
                 cell.subjectImage.image = UIImage(named: "\(imageName)")
-            }
+            }*/
         }
-        dropDown.dataSource = subjectNames
+        dropDown.dataSource = produceTypes//subjectNames
         dropDown.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
         dropDown.selectionAction = { [unowned self] (index, item) in
             self.dropdownButton.setTitle(item, for: .normal)
@@ -289,7 +292,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                                         doesContain = true
                                     }
                                 }
-                                if doesContain == false && userObject.email != "kimemily1@gmail.com" {
+                                if doesContain == false {
                                     
                                 
                                 newUsers.append(userObject)

@@ -13,7 +13,7 @@
         <!--Sign Up-->
         <scene sceneID="QuE-Ih-Eaa">
             <objects>
-                <viewController storyboardIdentifier="TutorSignUpViewControllerOne" id="tvH-Az-yik" customClass="TutorSignUpViewControllerOne" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorSignUpViewControllerOne" id="tvH-Az-yik" customClass="TutorSignUpViewControllerOne" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="74y-0f-SWh"/>
                         <viewControllerLayoutGuide type="bottom" id="oQ5-gN-CiV"/>
@@ -25,7 +25,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="VJX-LX-BRm"/>
                     <connections>
-                        <segue destination="zzC-Eo-xJr" kind="show" identifier="toSecondVC" id="TGF-7T-zAf"/>
+                        <segue destination="X1N-CK-Yff" kind="show" identifier="toSecondVC" id="pH8-Ep-Rjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juc-EF-d8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,7 +43,7 @@
         <!--TutorSignUpViewControllerTwo-->
         <scene sceneID="hYI-Os-DTF">
             <objects>
-                <viewController title="TutorSignUpViewControllerTwo" id="zzC-Eo-xJr" customClass="TutorSignUpViewControllerTwo" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TutorSignUpViewControllerTwo" id="zzC-Eo-xJr" customClass="TutorSignUpViewControllerTwo" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KOM-6B-Eyq"/>
                         <viewControllerLayoutGuide type="bottom" id="EKB-uw-ZYv"/>
@@ -65,7 +65,7 @@
         <!--Tutor Or Tutee View Controller-->
         <scene sceneID="2OA-Hw-Woh">
             <objects>
-                <viewController storyboardIdentifier="TutorOrTuteeViewController" id="f1O-17-5Nh" customClass="TutorOrTuteeViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorOrTuteeViewController" id="f1O-17-5Nh" customClass="TutorOrTuteeViewController" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MeE-ad-Wbd"/>
                         <viewControllerLayoutGuide type="bottom" id="ZPH-QJ-GJX"/>
@@ -96,8 +96,8 @@
                                     <action selector="tutorTapped:" destination="f1O-17-5Nh" eventType="touchUpInside" id="bbR-Sk-VML"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you a student or a tutor?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-WE-1je">
-                                <rect key="frame" x="56.5" y="145" width="262.5" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up as a " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-WE-1je">
+                                <rect key="frame" x="56.5" y="159" width="262.5" height="29.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.59890545685279184" green="0.59890545685279184" blue="0.59890545685279184" alpha="0.56126926369863017" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,7 +116,6 @@
                         <outlet property="ballView" destination="6mn-N7-jTL" id="TQ7-x4-0Ct"/>
                         <outlet property="ballView2" destination="9ys-69-rZ9" id="mEF-yN-G1I"/>
                         <outlet property="chooseLabel" destination="IHY-WE-1je" id="hvZ-fX-2Ps"/>
-                        <segue destination="zlZ-Tz-VvW" kind="show" identifier="toTuteeSignUpVC" id="GTo-4u-K6u"/>
                         <segue destination="r5a-IX-An8" kind="show" identifier="toTutorSignUpVC" id="JkN-MB-NsO"/>
                     </connections>
                 </viewController>
@@ -124,28 +123,10 @@
             </objects>
             <point key="canvasLocation" x="1784.8" y="900.89955022488766"/>
         </scene>
-        <!--TuteeVC-->
-        <scene sceneID="E0p-wa-5BI">
-            <objects>
-                <viewController title="TuteeVC" id="zlZ-Tz-VvW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RIk-py-ltH"/>
-                        <viewControllerLayoutGuide type="bottom" id="wHd-wa-RqD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="e6N-Gc-bDJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oXh-dq-Zli" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2777" y="1330"/>
-        </scene>
         <!--SignUpViewController-->
         <scene sceneID="cG0-wP-MjU">
             <objects>
-                <viewController storyboardIdentifier="signupVC" title="SignUpViewController" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupVC" title="SignUpViewController" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GfZ-H1-YzK"/>
                         <viewControllerLayoutGuide type="bottom" id="s31-lQ-90V"/>
@@ -155,9 +136,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="WeTutor" id="zUo-dI-Ll5"/>
+                    <navigationItem key="navigationItem" title="EcoFriends" id="zUo-dI-Ll5"/>
                     <connections>
-                        <segue destination="f1O-17-5Nh" kind="show" identifier="goToTutorOrTutee" id="OLB-7F-WMk"/>
+                        <segue destination="r5a-IX-An8" kind="show" identifier="goToTutorOrTutee" id="EXx-zT-JyR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEX-Hq-NAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,7 +148,7 @@
         <!--LoginViewController-->
         <scene sceneID="yMh-AR-mBf">
             <objects>
-                <viewController storyboardIdentifier="loginVC" title="LoginViewController" id="jKf-CE-eNp" customClass="LoginViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" title="LoginViewController" id="jKf-CE-eNp" customClass="LoginViewController" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wuX-h5-GPh"/>
                         <viewControllerLayoutGuide type="bottom" id="PgL-oo-hZ6"/>
@@ -177,10 +158,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="WeTutor" id="xwO-Sm-AOc"/>
+                    <navigationItem key="navigationItem" title="EcoFriends" id="xwO-Sm-AOc"/>
                     <connections>
-                        <segue destination="f1O-17-5Nh" kind="show" identifier="toTutorOrTuteeVC" id="UNl-nb-Bdv"/>
                         <segue destination="X1N-CK-Yff" kind="show" identifier="toPagingMenuVC" id="yHJ-Ym-rSV"/>
+                        <segue destination="r5a-IX-An8" kind="show" identifier="toTutorOrTuteeVC" id="sgV-CF-q7I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0P-Lz-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -287,7 +268,7 @@
         <!--Profile Picture View Controller-->
         <scene sceneID="ef0-vi-Quu">
             <objects>
-                <viewController storyboardIdentifier="ProfilePictureViewController" id="Qf2-ac-P5c" customClass="ProfilePictureViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfilePictureViewController" id="Qf2-ac-P5c" customClass="ProfilePictureViewController" customModule="EcoFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZA4-O2-nk5"/>
                         <viewControllerLayoutGuide type="bottom" id="rUs-2t-WPS"/>
@@ -400,8 +381,7 @@
         <image name="camera circle" width="216" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UNl-nb-Bdv"/>
-        <segue reference="TGF-7T-zAf"/>
-        <segue reference="NVR-V7-DSM"/>
+        <segue reference="pH8-Ep-Rjf"/>
+        <segue reference="sgV-CF-q7I"/>
     </inferredMetricsTieBreakers>
 </document>
