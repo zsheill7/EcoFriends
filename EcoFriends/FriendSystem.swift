@@ -405,7 +405,12 @@ class FriendSystem {
     
     func addFoodObserver(_ update: @escaping () -> Void) {
         FOOD_REF.observe(FIRDataEventType.value, with: { (snapshot) in
-            
+            self.foodList.removeAll()
+            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                let value = child.value as? [String: AnyObject]
+                self.foodList.append(Food(snapshot: child))
+            }
+            update()
         })
     }
     /** Removes the user observer. This should be done when leaving the view that uses the observer. */

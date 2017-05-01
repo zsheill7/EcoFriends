@@ -286,7 +286,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
        // self.view.addBackground()
         
-        self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
+       // self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
+        self.view.addFullScreenBackground("background-green")
         calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
         //self.calendarView.width = self.view.width + 20
@@ -295,20 +296,21 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
         //FriendSystem.system.friendList.removeAll()
     
-    FriendSystem.system.addFriendObserverThree(friendListNumber: 3) {
+        self.loadAllEvents(completed: {
+            for event in self.events {
+                print("event.uid \(event.uid)\n event.title \(event.title)")
+            }
+           // self.observeChannels()
+            //self.events.sort(by: { $0.startDate.compare($1.startDate as Date) == ComparisonResult.orderedAscending })
+            self.tableView.reloadData()
+            
+            self.calendarView.reloadData()
+            
+        })
+    /*FriendSystem.system.addFriendObserverThree(friendListNumber: 3) {
             // print("inside FriendSystem.system.addFriendObserver")
             print("jaFriendSystem.system.friendListThree  \(FriendSystem.system.friendListThree.count)")
-            self.loadAllEvents(completed: {
-                for event in self.events {
-                    print("event.uid \(event.uid)\n event.title \(event.title)")
-                }
-                self.observeChannels()
-                self.events.sort(by: { $0.startDate.compare($1.startDate as Date) == ComparisonResult.orderedAscending })
-                self.tableView.reloadData()
-                
-                self.calendarView.reloadData()
-                
-            })
+        
             
             /* self.loadAllEvents{ () -> () in
              self.newQuestion()
@@ -318,7 +320,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             print("1FriendSystem.system.friendListThree \(FriendSystem.system.friendListThree.count)")
             
             
-        }
+        }*/
         
         let refresher = PullToRefresh()
         tableView.addPullToRefresh(refresher) {
@@ -623,8 +625,46 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.events = [Event]()
         let channelRef = FIRDatabase.database().reference().child("channels")
         
-        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        let eventRef = FIRDatabase.database().reference().child("events")
+        
+        eventRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let allEvents = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for event in allEvents {
+                    if let eventDict = event.value as? Dictionary<String, AnyObject> {
+                    for (key, event) in eventDict {
+                            print("2print event in eventsDict \(event)" )
+                            let startDateDouble = event["startDate"] as? Double ?? Date().timeIntervalSince1970
+                            let endDateDouble = event["endDate"] as? Double ?? Date().timeIntervalSince1970
+                            let endDate = Date(timeIntervalSince1970: endDateDouble)
+                            let startDate = Date(timeIntervalSince1970: startDateDouble)
+                            let eventTitle = event["title"] as? String ?? "New Event"
+                            let description = event["description"] as? String ?? "I look forward to seeing you!"
+                            let repeatInterval = event["repeatInterval"] as? String ?? "Never"
+                            let eventAlert = event["eventAlert"] as? String ?? "Never"
+                            let eventLocation = event["location"] as? String ?? "Mercer Island Library"//CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
+                            let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                           // print("2newEvent \(newEvent.uid) channelCount \(channelCount) friendCount \(friendCount)")
+                            var eventListDoesContain = false
+                            for eventListEvent in self.events {
+                                if eventListEvent.uid == key {
+                                    eventListDoesContain = true
+                                }
+                            }
+                            if eventListDoesContain == false {
+                                self.events.append(newEvent)
+                            }
+                        self.tableView.reloadData()
+                            // print("self.events inside \(self.events.count)  \(self.events)")
+                        }
+                    }
+                }
+            }
             
+            
+        })
+        
+        /*channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+         
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
@@ -634,7 +674,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
                     self.iterationStatus = "inProcess"
                    /* for channel in allChannels {
-                        
+         
                         if let channelDict = channel.value as? Dictionary<String, AnyObject> {
                             print("1channelDict \(channelDict)")
                             print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
@@ -772,7 +812,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             print("right before completed")
             completed()
             
-        })
+        })*/
         
         
         

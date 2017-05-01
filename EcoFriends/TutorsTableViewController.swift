@@ -63,9 +63,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     var newChannel: Channel?
     var destinationUser: User!
     var currentUser: User?
-    
+     var iterationStatus = ""
     var finalUserList = [User]()
     var friendUserUIDList = [String]()
+    
+    var foodList = [Food]()
     
     @IBOutlet weak var tableView: UITableView!
    // @IBOutlet weak var dropdownView: UIView!
@@ -118,7 +120,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         userRef = FIRDatabase.database().reference().child("users")
         
         setupDropDown()
-        
+        self.view.addFullScreenBackground("background-green flipped")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         tableView.emptyDataSetSource = self
@@ -145,7 +147,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
         
         self.finalUserList.removeAll()
-        FriendSystem.system.addUserObserver { () in
+        /*FriendSystem.system.addUserObserver { () in
             for user in FriendSystem.system.userList {
                 var contains = false
                 for finalUser in self.finalUserList {
@@ -164,7 +166,15 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 print("1finalUserList  \(index) \(user.uid)")
             }
             self.tableView.reloadData()
+        }*/
+        FriendSystem.system.addFoodObserver { () in
+            /*for foodItem in FriendSystem.system.foodList {
+                self.
+            }*/
+            self.foodList = FriendSystem.system.foodList
+            self.tableView.reloadData()
         }
+        
         
       //  FriendSystem.system.friendListTwo.removeAll()
         FriendSystem.system.addFriendObserverTwo(friendListNumber: 2) {
@@ -222,7 +232,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         dropdownButton.width = self.view.frame.width - 10
         dropdownButton.layer.cornerRadius = 16
         dropdownButton.layer.width = view.frame.width - 10
-        dropdownButton.layer.backgroundColor = UIColor.sliderGreen().cgColor
+        dropdownButton.layer.backgroundColor = UIColor.titleBlue().cgColor//UIColor.sliderGreen().darken(byPercentage: 0.3)?.cgColor
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
         dropDown.bottomOffset = CGPoint(x: 0, y: 20)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
@@ -320,7 +330,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     func didSelect(_ segmentIndex: Int) {
         print("didSelect")
         self.segmentIndexIsTutor = segmentIndex
-        finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
+        finalFilter(segmentItemFood: self.segmentItemSubject)
         /*switch segmentIndex {
         case 0: //tutors
             finalUserList.removeAll()
@@ -356,7 +366,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     func filterBySubject(_ segmentItem: String) {
         print("filterBySubject")
         self.segmentItemSubject = segmentItem
-        finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
+        finalFilter(segmentItemFood: self.segmentItemSubject)
         /*if segmentItem == "All Subjects" {
             self.didSelect(dropDown.indexForSelectedRow!)
         } else {
@@ -373,22 +383,23 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
 
     }
     
-    func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
+    func finalFilter(segmentItemFood: String) {
     print("finalFilter")
-            finalUserList = [User]()
-            for user in FriendSystem.system.userList {
-                for subject in user.preferredSubjects {
-                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)){
-                        var elementInArray = false
+            foodList = [Food]()
+            for food in FriendSystem.system.foodList {
+                
+                for type in food.produceType {
+                    if (type == segmentItemFood || segmentItemFood == "All Foods"){
+                        /*var elementInArray = false
                         for lastUser in finalUserList {
                             print("finalUserList2 \(lastUser.uid)")
                             if lastUser.uid == user.uid {
                                 elementInArray = true
                             }
                         }
-                        if elementInArray == false {
-                            finalUserList.append(user)
-                        }
+                        if elementInArray == false {*/
+                            foodList.append(food)
+                        //}
                     }
                 }
             }
@@ -413,7 +424,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return tutors.count
         
-        return finalUserList.count
+        return foodList.count
     }
     
     
@@ -569,13 +580,75 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         print("in did select")
        
         
-        let userAtRow = finalUserList[indexPath.row]
+        let userAtRow = foodList[indexPath.row]//finalUserList[indexPath.row]
         
-        let tutor = userAtRow
-        self.UID = tutor.uid
-        self.destinationUser = tutor
-        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
-        
+        let userID = userAtRow.userID
+        self.senderDisplayName = userID
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isUserInteractionEnabled = false
+        if currentUser != nil {
+            FIRAnalytics.logEvent(withName: "did_select_chat", parameters: [
+                "current_user": currentUser?.uid as! NSObject,
+              
+                ])
+        }
+
+        //let tutor = userAtRow
+       // self.UID = tutor.uid
+       // self.destinationUser = tutor
+       // self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            cell?.isUserInteractionEnabled = true
+            print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
+            if snapshot.exists() {
+                print(" if snapshot.exists() {")
+                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                    print("typeofall")
+                    print(type(of: allChannels))
+                    print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
+                    self.iterationStatus = "inProcess"
+                    for channel in allChannels {
+                        
+                        if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            
+                            
+                                    self.iterationStatus = "done"
+                                    print("perform segue channel")
+                                    print(channel)
+                                    let newChannel = Channel(id: channel.key, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: userID)
+                                    //self.stopAnimating()
+                                    self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                    
+                                    break
+                            
+                            }
+                        
+                                
+                        
+                    } //for channel in allChannels {
+                }
+                
+            } //if snapshot.exists() {
+            
+            let uuid = UUID().uuidString
+            if self.iterationStatus == "inProcess" {
+                
+            let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: userID)
+            print("if tutorOrTutee == tuteeName {")
+            print("iterationStatus")
+            print(self.iterationStatus)
+            
+                self.createChannel(otherUser: userID)
+            print("if self.iterationStatus == inProcess1 {")
+            print("perform segue channel3")
+            print(channel)
+            self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                
+                    
+                
+            }
+        })
     }
 
  
@@ -601,7 +674,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         ref = FIRDatabase.database().reference()
         
-        let userAtRow = finalUserList[indexPath.row]
+        let userAtRow = foodList[indexPath.row] //let userAtRow = finalUserList[indexPath.row]
         
         for (index, auser) in finalUserList.enumerated() {
             print("finalUserList \(index) \(auser.uid)")
@@ -613,48 +686,33 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
                
         
-        if userAtRow.isTutor == true {
-            let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
+        //if userAtRow.isTutor == true {
+           /* let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
             if friendInArray == true {
                 cell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
             } else {
                 cell!.friendIndicatorView.image = nil
-            }
+            }*/
             
            
 
             
-            cell!.nameLabel.text = "\(userAtRow.name)"
-            cell!.schoolLabel.text = "\(userAtRow.school)"
-            cell!.gradeLabel.text = "\(userAtRow.grade)"
-            if let userAverageRating = userAtRow.averageRating {
-                cell!.ratingView.rating = userAverageRating
-            } else {
-                cell!.ratingView.rating = 0
-            }
+            cell!.nameLabel.text = "\(userAtRow.title)"
+            cell!.schoolLabel.text = "\(userAtRow.location)"
+            cell!.gradeLabel.text = "\(userAtRow.userName)"
             
             cell!.colorView = getColoredView()
             
-            let numberOfRatings = userAtRow.numberOfRatings
-            var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
-            if numberOfRatings == 1 {
-                numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
-            }
-            cell!.numberOfRatingsLabel.text = numberOfRatingsString
             
-            if userAtRow.gpa != nil && userAtRow.gpa > 0 {
-                let gpaString = String(format: "%.1f", userAtRow.gpa)
-                cell!.gpaLabel.text = gpaString
-            } else {
-                cell!.gpaLabel.text = ""
-            }
-            if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
-                let hourlyPriceString = String(format: "%.0f", userAtRow.hourlyPrice)
+            
+           
+            if userAtRow.price != nil && userAtRow.price > 0 {
+                let hourlyPriceString = String(format: "%.0f", userAtRow.price)
                 cell!.hourlyPriceLabel.text = "$" + hourlyPriceString
             }
             
             
-            let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
+            let subjectsString = userAtRow.produceType.joined(separator: ", ")
             //print(subjectsString)
             
             if subjectsString != nil && cell!.subjectLabel != nil{
@@ -664,17 +722,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
             
             
-            print("Name: \(userAtRow.name)")
+            print("Name: \(userAtRow.title)")
             print(cell!.nameLabel.text)
             
             
-            if cell!.nameLabel.isTruncated() {
+           /* if cell!.nameLabel.isTruncated() {
                 var delimiter = " "
                 var newstr = cell!.nameLabel.text
                 var truncatedName = newstr?.components(separatedBy: delimiter)
                 print ("Truncated Name \(truncatedName?[0])")
                 cell!.nameLabel.text = truncatedName?[0]
-            }
+            }*/
          
             cell!.infoButton.contentMode = .scaleAspectFit
             cell!.addFriendButton.contentMode = .scaleAspectFit
@@ -683,11 +741,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             print("in cell for row")
             cell!.setAddFriendFunction {
                 print(userAtRow)
-                let id = userAtRow.uid
+                let id = userAtRow.userID
                 print("userAtRow.uid \(id)")
                 //FriendSystem.system.sendRequestToUser(id)
                 FriendSystem.system.acceptFriendRequest(id)
-                self.createChannel(userAtRow)
+                //self.createChannel(userAtRow)
                 self.displayAlert("Success!", message: "Contact Added")
                 FriendSystem.system.addFriendObserver(friendListNumber: 1) {
                     print("chaFriendSystem.system.friendListOne  \(FriendSystem.system.friendListOne.count)")
@@ -702,85 +760,62 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.setInfoFunction {
                 let tutor = userAtRow
                 self.UID = tutor.uid
-                self.destinationUser = tutor
-                self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+               // self.destinationUser = tutor
+                self.performSegue(withIdentifier: "toAddEventVC"/*"toMoreInfoVC"*/, sender: self)
             }
         
-        // Return cell
-        } else {
-            let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
-            if friendInArray == true {
-                tuteeCell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
-            } else {
-                tuteeCell!.friendIndicatorView.image = nil
-            }
-            cell!.colorView = getColoredView()
-            
-            
-            
-            tuteeCell!.nameLabel.text = "\(userAtRow.name)"
-            tuteeCell!.schoolLabel.text = "\(userAtRow.school)"
-            tuteeCell!.gradeLabel.text = "\(userAtRow.grade)"
-            
-            
-            let numberOfRatings = userAtRow.numberOfRatings
-            var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
-            if numberOfRatings == 1 {
-                numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
-            }
-            
-            if let userAverageRating = userAtRow.averageRating {
-                cell!.ratingView.rating = userAverageRating
-            } else {
-                cell!.ratingView.rating = 0
-            }
-            
-           
-            cell!.numberOfRatingsLabel.text = numberOfRatingsString
-            
-           
-            let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-            //print(subjectsString)
-            
-            if subjectsString != nil && tuteeCell!.subjectLabel != nil{
-                tuteeCell!.subjectLabel.text = "\(subjectsString)"
-            } else {
-                // tuteeCell!.subjectLabel.text = ""
-            }
-            
-            
-            print("Name: \(userAtRow.name)")
-            print(tuteeCell!.nameLabel.text)
-            tuteeCell!.infoButton.contentMode = .scaleAspectFit
-            tuteeCell!.addFriendButton.contentMode = .scaleAspectFit
-            
-            
-            print("in tuteeCell for row")
-            tuteeCell!.setAddFriendFunction {
-                print(userAtRow)
-                let id = userAtRow.uid
-                print("userAtRow.uid \(id)")
-                //FriendSystem.system.sendRequestToUser(id)
-                FriendSystem.system.acceptFriendRequest(id)
-                self.createChannel(userAtRow)
-                self.displayAlert("Success!", message: "Contact Added")
-            }
-            
-            tuteeCell!.setInfoFunction {
-                let tutor = userAtRow
-                self.UID = tutor.uid
-                self.destinationUser = tutor
-                self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
-            }
-
-        }
-        if userAtRow.isTutor == true {
-            return cell!
-        }
-        return tuteeCell!
+        return cell!
+        
     }
     
     
+    var tutorOrTutee = "tutorName"
+    var currentUserIsTutor = false
+
+    
+    func createChannel(otherUser: String) {
+        
+        
+        
+        /*let userDefaults = UserDefaults.standard
+         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+         let userName = userDefaults.value(forKey: "name") as? String {
+         }
+         }*/
+        let userDefaults = UserDefaults.standard
+        let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+        
+        if let userID = FIRAuth.auth()?.currentUser?.uid {
+            
+            if isTutor == true {
+                tutorName = userID
+                tuteeName = otherUser
+            } else {
+                tutorName = otherUser
+                tuteeName = userID
+            }
+        } else {
+            tutorName = "Chat"
+            tuteeName = "Chat"
+        }
+        
+        
+        let channelItem = [
+            "tutorName": tutorName,
+            "tuteeName": tuteeName
+        ]
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        let uuid = UUID().uuidString
+        let newChannelRef = channelRef.child(uuid)
+        newChannelRef.setValue(channelItem)
+        userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
+        userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+        
+        //channelRef.child(uuid).setValue(
+        
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

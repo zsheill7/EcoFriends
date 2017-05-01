@@ -101,12 +101,12 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
         //basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
-        basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)"//\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
+    /*basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)"//\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
          descriptionLabel.text = destUser.description
-        nameLabel.text = "\(destUser.name)"
-        availabilityInfo.text = destUser.availabilityInfo
+        nameLabel.text = "\(destUser.name)"*/
+      //  availabilityInfo.text = destUser.availabilityInfo
         
-        self.setupUserRating()
+       // self.setupUserRating()
         
        /* if let profileImageUrl = destUser.profileImageUrl {
             if URL(string: destUser.profileImageUrl!) != nil {
@@ -194,7 +194,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         horizontalScrollView.uniformItemSize = CGSize(width: 60, height: 60)
         //this must be called after changing any size or margin property of this class to get acurrate margin
         horizontalScrollView.setItemsMarginOnce()
-        for index in 0...destUser.preferredSubjects.count - 1 {
+       /* for index in 0...destUser.productTypes.count - 1 {
             print("for index in 1...subjectNames.count{")
             let imageView = UIImageView()
             let imageName = destUser.preferredSubjects[index]
@@ -205,7 +205,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
             horizontalScrollView.addItem(imageView)
-        }
+        }*/
         _ = horizontalScrollView.centerSubviews()
         
         subjectView.addSubview(horizontalScrollView)

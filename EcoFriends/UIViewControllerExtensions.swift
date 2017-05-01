@@ -26,7 +26,7 @@ extension UIView {
             bundle: bundle
             ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
-    func addFullScreenBackground(named: String) {
+    func addFullScreenBackground(_ named: String) {
         // screen width and height:
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height

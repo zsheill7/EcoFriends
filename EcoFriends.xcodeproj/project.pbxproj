@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */; };
+		61B4AF273903E7CBAE5B363F /* Pods_EcoFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0E08E229F9DC615D88C9CD /* Pods_EcoFriends.framework */; };
 		96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */; };
 		96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */; };
 		96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */; };
@@ -136,6 +137,8 @@
 
 /* Begin PBXFileReference section */
 		2C0795EA5FC191C95C70C6CF /* Pods-TextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.release.xcconfig"; sourceTree = "<group>"; };
+		3EABE254D022A810AB235869 /* Pods-EcoFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFriends.release.xcconfig"; path = "Pods/Target Support Files/Pods-EcoFriends/Pods-EcoFriends.release.xcconfig"; sourceTree = "<group>"; };
+		4A0E08E229F9DC615D88C9CD /* Pods_EcoFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcoFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeTutor.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor.release.xcconfig"; sourceTree = "<group>"; };
 		928FC51B6AE8ACDCE5CB3BE0 /* Pods-TextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.debug.xcconfig"; sourceTree = "<group>"; };
 		96090AE41D9CDD2E00709CA6 /* EcoFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +275,7 @@
 		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
 		C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		DC5D364F9FFE96932F66C571 /* Pods-EcoFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EcoFriends/Pods-EcoFriends.debug.xcconfig"; sourceTree = "<group>"; };
 		E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeTutor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -282,6 +286,7 @@
 			files = (
 				C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */,
 				18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */,
+				61B4AF273903E7CBAE5B363F /* Pods_EcoFriends.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +299,7 @@
 				C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */,
 				B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */,
 				E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */,
+				4A0E08E229F9DC615D88C9CD /* Pods_EcoFriends.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -350,6 +356,8 @@
 				2C0795EA5FC191C95C70C6CF /* Pods-TextField.release.xcconfig */,
 				C5875EC10C650ED442BE78C5 /* Pods-WeTutor.debug.xcconfig */,
 				4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */,
+				DC5D364F9FFE96932F66C571 /* Pods-EcoFriends.debug.xcconfig */,
+				3EABE254D022A810AB235869 /* Pods-EcoFriends.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -725,7 +733,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EcoFriends/Pods-EcoFriends-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6099C8DF19EA89AE80F6B37F /* [CP] Check Pods Manifest.lock */ = {
@@ -755,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EcoFriends/Pods-EcoFriends-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -970,7 +978,7 @@
 		};
 		96090AF71D9CDD2E00709CA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5875EC10C650ED442BE78C5 /* Pods-WeTutor.debug.xcconfig */;
+			baseConfigurationReference = DC5D364F9FFE96932F66C571 /* Pods-EcoFriends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -999,7 +1007,7 @@
 		};
 		96090AF81D9CDD2E00709CA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */;
+			baseConfigurationReference = 3EABE254D022A810AB235869 /* Pods-EcoFriends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

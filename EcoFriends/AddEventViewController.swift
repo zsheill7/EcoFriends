@@ -24,6 +24,7 @@ class AddEventViewController: FormViewController {
         }
     }
     var channelRef: FIRDatabaseReference?
+    var ref = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,7 +238,7 @@ class AddEventViewController: FormViewController {
                 let uuid = UUID().uuidString
                 let eventDict = ["title": title, "location": location, "startDate": startDateInterval, "endDate": endDateInterval, "repeatInterval": repeatInterval, "alert": alert ?? "", "notes": notes ?? ""] as [String : Any]
                 print("channelRefe \(self.channelRef) eventDict \(eventDict) uid \(FIRAuth.auth()?.currentUser?.uid)")
-                self.channelRef?.child("events").child(uuid).setValue(eventDict)
+                self.ref.child("events").child(uuid).setValue(eventDict)
                 
                 let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController

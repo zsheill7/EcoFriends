@@ -83,7 +83,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
    
     
     //self.view.addBackground()
-    self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
+   // self.view.backgroundColor = UIColor.backgroundGreen()//UIColor(netHex: 0x8DC63F)
+    self.view.addFullScreenBackground("background-green")
    // searchBar.delegate = self
     //self.view.addBackground()
      if let userID = FIRAuth.auth()?.currentUser?.uid {
@@ -446,6 +447,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     let destUser = FriendSystem.system.friendListOne[indexPath.row]
     let destUserID = destUser.uid
+    
     channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
         cell?.isUserInteractionEnabled = true
         print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
@@ -455,64 +457,40 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                 print("typeofall")
                 print(type(of: allChannels))
                 print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
-                     self.iterationStatus = "inProcess"
+                self.iterationStatus = "inProcess"
                 for channel in allChannels {
-                
-                    if let channelDict = channel.value as? Dictionary<String, AnyObject> {
-                       //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
                     
-                        if self.currentUserIsTutor == false {
-                            if let tuteeName = channelDict["tuteeName"] as? String,
-                                let  tutorName = channelDict["tutorName"] as? String{
-                                if tuteeName == FIRAuth.auth()?.currentUser?.uid {
-                                    print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
-                              
-                                    if tutorName == destUserID {
-                                        self.iterationStatus = "done"
-                                        print("perform segue channel")
-                                        print(channel)
-                                         let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
-                                        self.stopAnimating()
-                                         self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
-                                        
-                                        break
-                                    }
-                                }
-                            }
+                    if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                        //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                        
+                       
+            
+                            self.iterationStatus = "done"
+                            print("perform segue channel")
+                            print(channel)
+                        let newChannel = Channel(id: channel.key, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                            self.stopAnimating()
+                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
                             
-                        } else if self.currentUserIsTutor == true {
-                            if let tuteeName = channelDict["tuteeName"] as? String,
-                                let  tutorName = channelDict["tutorName"] as? String{
-                                if tutorName == FIRAuth.auth()?.currentUser?.uid {
-                                    print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
-                                    if tuteeName == destUserID {
-                                        self.iterationStatus = "done"
-                                        print("perform segue channel2")
-                                        print(channel)
-                                        let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
-                                        self.stopAnimating()
-                                        self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
-                                        
-                                        break
-                                    }
-                                } //if channelDict["tutorName"]
-                            }
-                        }
+                        
+                        
+                    
+                        
                         
                     }
                 } //for channel in allChannels {
             }
             
         } //if snapshot.exists() {
-            
+        
         let uuid = UUID().uuidString
         if self.iterationStatus == "inProcess" {
-            if self.tutorOrTutee == "tuteeName" {
+          
                 let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
                 print("if tutorOrTutee == tuteeName {")
                 print("iterationStatus")
                 print(self.iterationStatus)
-      
+                
                 self.createChannel(otherUser: destUserID)
                 print("if self.iterationStatus == inProcess1 {")
                 print("perform segue channel3")
@@ -521,20 +499,10 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                 self.performSegue(withIdentifier: "toChatVC", sender: channel)
                 
                 
-            } else if self.tutorOrTutee == "tutorName" {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
-                print("if tutorOrTutee == tutorName {")
-
-                print("if self.iterationStatus == inProcess2 {")
-                self.createChannel(otherUser: destUserID)
-                print("perform segue channel4")
-                print(channel)
-                self.stopAnimating()
-                self.performSegue(withIdentifier: "toChatVC", sender: channel)
-                
-            }
+            
         }
     })
+    
   }
     
    /* func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

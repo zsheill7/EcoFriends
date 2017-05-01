@@ -105,7 +105,7 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
            
             <<< DecimalRow("Price") {
                 $0.useFormatterDuringInput = true
-                $0.title = "Hourly Price"
+                $0.title = "Price"
                 $0.placeholder = "$17.00"
                 let formatter = CurrencyFormatter()
                 formatter.locale = .current
@@ -127,7 +127,7 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
              $0.title = "Produce Type"
              $0.tag = "producetype"
              $0.options = produceTypes
-             $0.value = ["Grain"]
+             $0.value = ["Fruit"]
              }
              .onPresent { from, to in
              to.view.backgroundColor = UIColor.backgroundBlue()
@@ -207,6 +207,8 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
          if producetype != nil {
             produceArray = Array(producetype!)
          }
+        
+        
         let row7: TextAreaRow? = self.form.rowBy(tag: "description")
         let description = row7?.value
         
@@ -224,7 +226,7 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
             
             let userID = UUID().uuidString
             
-            let destUserID = FIRAuth.auth()?.currentUser
+            let destUserID = FIRAuth.auth()?.currentUser?.uid
             
          /*   self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -250,7 +252,7 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
                     self.ref.child("food/\(userID)/title").setValue(title)
                     self.ref.child("food/\(userID)/location").setValue(location)
                     self.ref.child("food/\(userID)/price").setValue(price)
-                    self.ref.child("food/\(userID)/producetype").setValue(producetype)
+                    self.ref.child("food/\(userID)/producetype").setValue(produceArray)
                     /*self.ref.child("users/\(userID!)/grade").setValue(grade)
                      self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)*/
                     self.ref.child("food/\(userID)/description").setValue(description)
@@ -283,8 +285,11 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
                         }
                     }*/
                     self.stopAnimating()
-                    
-                    self.performSegue(withIdentifier: "toSecondVC", sender: self)
+            
+                    let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                    self.present(controller, animated: true, completion: nil)
+                    //self.performSegue(withIdentifier: "toSecondVC", sender: self)
                     
                     
              /*   } else {
@@ -311,6 +316,10 @@ class NewProduceViewController : FormViewController, NVActivityIndicatorViewable
         }
         
     }
+    
+    var tuteeName = ""
+    var tutorName = ""
+    
     
     
     

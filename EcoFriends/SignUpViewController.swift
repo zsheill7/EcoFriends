@@ -104,7 +104,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
        
        // self.view.addBackground("book.png")
        
-        self.view.addFullScreenBackground(named: "background-green.jpg")
+        self.view.addFullScreenBackground("background-green.jpg")
        // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background-green.jpg")!)
         
         

@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
             horizConstant = 100
         }
         
-     self.view.addFullScreenBackground(named: "background-green.jpg")
+     self.view.addFullScreenBackground("background-green.jpg")
      
         
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()

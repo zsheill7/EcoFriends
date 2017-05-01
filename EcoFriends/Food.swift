@@ -18,6 +18,7 @@ struct Food {
     let price: Double
     let produceType: [String]
     let userID: String
+    let userName: String
     
     
     
@@ -63,6 +64,12 @@ struct Food {
             self.userID = userID
         } else {
             self.userID = ""
+        }
+        
+        if let userName = snapshotValue?["userName"] as? String {
+            self.userName = userName
+        } else {
+            self.userName = ""
         }
 
         
