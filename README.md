@@ -1,4 +1,4 @@
-<h1> WeTutor</h1>
+<h1> EcoFriends</h1>
 
 The EcoFriends app allows anyone to sell excess food they have, preventing countless tons of food from going to
 waste. Restaurants and producers can post excess food they have for people to pick up, and anyone can purchase
